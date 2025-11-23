@@ -15,7 +15,7 @@ def calculate_bmi(df):
         pd.DataFrame: DataFrame with a new BMI column.
     """
     df = df.copy()
-    df["BMI"] = df["Weight"] / (df["Height"] / 100) ** 2
+    df["BMI"] = df["weight"] / (df["height"] / 100) ** 2
     return df
 
 
@@ -44,20 +44,20 @@ class HealthAnalyzer:
         Returns:
             float: Mean blood pressure.
         """
-        return self.df["BloodPressure"].mean()
+        return self.df["systolic_bp"].mean()
 
     def age_weight_regression(self):
         """
         Perform linear regression using the normal equation:
             beta = (X^T X)^(-1) X^T y
 
-        Predicts BloodPressure using Age and Weight.
+        Predicts bloodPressure using Age and Weight.
 
         Returns:
             np.ndarray: Regression coefficients [bias, age_coeff, weight_coeff]
         """
-        X = self.df[["Age", "Weight"]].values
-        y = self.df["BloodPressure"].values
+        X = self.df[["age", "weight"]].values
+        y = self.df["systolic_bp"].values
 
         # Add bias term
         X = np.c_[np.ones(X.shape[0]), X]

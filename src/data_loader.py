@@ -12,3 +12,4 @@ def load_health_data(path="data/health_study_dataset.csv"):
         pd.DataFrame: Loaded dataset.
     """
     return pd.read_csv(path)
+    
