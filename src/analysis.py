@@ -56,6 +56,8 @@ class HealthAnalyzer:
         Returns:
             np.ndarray: Regression coefficients [bias, age_coeff, weight_coeff]
         """
+
+         # Select features
         X = self.df[["age", "weight"]].values
         y = self.df["systolic_bp"].values
 
